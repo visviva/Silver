@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Silver": {
-      "commandName": "Project",
-      "commandLineArgs": "dsfsadfasdf\r\nasdfasdf"
+      "commandName": "Project"
     }
   }
 }

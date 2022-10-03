@@ -38,20 +38,11 @@ namespace Silver
             this.source = program;
         }
 
-        private bool IsAtEnd()
-        {
-            return current >= this.source.Length;
-        }
+        private bool IsAtEnd() => current >= this.source.Length;
 
-        private char Advance()
-        {
-            return source.ElementAt(current++);
-        }
+        private char Advance() => source.ElementAt(current++);
 
-        private void AddToken(TokenType type)
-        {
-            AddToken(type, null);
-        }
+        private void AddToken(TokenType type) => AddToken(type, null);
 
         private void AddToken(TokenType type, object? literal)
         {
@@ -76,21 +67,9 @@ namespace Silver
             return true;
         }
 
-        private char Peek()
-        {
-            if (IsAtEnd()) return '\0';
-            return source[current];
-        }
+        private char Peek() => !IsAtEnd() ? source[current] : '\0';
 
-        private char PeekNext()
-        {
-            if (current + 1 >= source.Length)
-            {
-                return '\0';
-            }
-
-            return source[current + 1];
-        }
+        private char PeekNext() => current + 1 < source.Length ? source[current + 1] : '\0';
 
         private void String()
         {
@@ -118,10 +97,7 @@ namespace Silver
             AddToken(TokenType.STRING, value);
         }
 
-        private static bool IsDigit(char c)
-        {
-            return c >= '0' && c <= '9';
-        }
+        private static bool IsDigit(char c) => c >= '0' && c <= '9';
 
         private void Number()
         {
@@ -145,15 +121,9 @@ namespace Silver
             AddToken(TokenType.NUMBER, double.Parse(source[start..current], CultureInfo.CurrentCulture));
         }
 
-        private static bool IsAlpha(char c)
-        {
-            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c == '_');
-        }
+        private static bool IsAlpha(char c) => (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c == '_');
 
-        private static bool IsAlphaNumeric(char c)
-        {
-            return IsAlpha(c) || IsDigit(c);
-        }
+        private static bool IsAlphaNumeric(char c) => IsAlpha(c) || IsDigit(c);
 
         private void Identifier()
         {
