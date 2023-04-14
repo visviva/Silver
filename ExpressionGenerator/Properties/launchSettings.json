@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ExpressionGenerator": {
+      "commandName": "Project"
+    },
+    "Debug Source Generator": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\Silver\\Silver.csproj"
+    }
+  }
+}
